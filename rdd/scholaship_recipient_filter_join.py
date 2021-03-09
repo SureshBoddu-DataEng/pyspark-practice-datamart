@@ -62,7 +62,7 @@ if __name__ == '__main__':
         .map(lambda rec: (rec[1][0][0], (rec[1][0][1], rec[1][0][2], rec[1][1])))
 
     join_pair_rdd.foreach(print)
-    join_pair_rdd \
+    courses_rdd \
         .toDF() \
         .write \
         .mode("overwrite") \
