@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     join_pair_rdd.foreach(print)
     join_pair_rdd \
-        .repartition(2) \
+        .toDF() \
         .write \
         .mode("overwrite") \
         .option("header", "true") \
