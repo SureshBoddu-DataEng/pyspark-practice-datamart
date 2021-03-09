@@ -35,12 +35,11 @@ if __name__ == '__main__':
     coursesRDD = spark.sparkContext.textFile("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/course.csv")
     coursesRDD.collect();
 
-    coursesRDD \
-        .toDF(["id", "name"]) \
-        .write \
-        .mode("overwrite") \
-        .option("header", "true") \
-        .option("delimiter", "~") \
-        .csv("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/result")
+    #coursesRDD \
+     #   .toDF() \
+      #  .write \
+       # .mode("overwrite") \
+        #.option("delimiter", "~") \
+        #.csv("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/result")
 
 # spark-submit --packages "org.apache.hadoop:hadoop-aws:2.7.4" rdd/scholaship_recipient_filter_join.py
