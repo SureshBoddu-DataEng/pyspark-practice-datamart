@@ -35,6 +35,8 @@ if __name__ == '__main__':
     coursesRDD = spark.sparkContext.textFile("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/course.csv")
     df = coursesRDD.map(lambda line: line.split(",")).toDF(["id", "name"])
 
+    df.show();
+
     df.write \
       .mode("overwrite") \
       .option("delimiter", "~") \
