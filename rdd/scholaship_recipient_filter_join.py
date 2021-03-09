@@ -33,7 +33,7 @@ if __name__ == '__main__':
     hadoop_conf.set("fs.s3a.secret.key", app_secret["s3_conf"]["secret_access_key"])
 
     coursesRDD = spark.sparkContext.textFile("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/course.csv")
-    coursesRDD.show();
+    coursesRDD.collect();
 
     coursesRDD \
         .toDF(["id", "name"]) \
