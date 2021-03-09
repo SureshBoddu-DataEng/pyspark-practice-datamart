@@ -62,5 +62,12 @@ if __name__ == '__main__':
         .map(lambda rec: (rec[1][0][0], (rec[1][0][1], rec[1][0][2], rec[1][1])))
 
     join_pair_rdd.foreach(print)
+    join_pair_rdd \
+        .repartition(2) \
+        .write \
+        .mode("overwrite") \
+        .option("header", "true") \
+        .option("delimiter", "~") \
+        .csv("s3a://" + app_conf["s3_conf"]["s3_bucket"] + "/result")
 
 # spark-submit --packages "org.apache.hadoop:hadoop-aws:2.7.4" rdd/scholaship_recipient_filter_join.py
